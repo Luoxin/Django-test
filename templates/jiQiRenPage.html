@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <script src="/static/js/jquery-2.2.4.min .js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <style>
+        #duihuakuang{
+{#            border: 1px red solid;#}
+            height: 500px;
+            width: 500px;
+{#            border-radius: 100px;#}
+            padding-top: 50px;
+            padding-left: 20px;
+            background-image: url("/static/img/bg_day.png");
+            background-size: 100% 100%;
+            overflow-y: auto;
+        }
+        /*a:link 定义正常的连接样式
+        a:visited 定义以访问过的样式
+        a:active 定义点击连接时的样式*/
+        a{
+            color:deeppink;
+            text-decoration: none;/*去掉底线*/
+        }
+        a:hover{/*悬浮样式*/
+            color: yellow;
+            text-decoration: underline;
+        }
+        a:active{
+            color: blue;
+            text-decoration: none;
+        }
+        .text-left,.text-right{
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="duihuakuang"  >
+
+    </div>
+    我:<input type=text id="neirong" placeholder="请输入内容">
+    <a href="javascript:void (0)" onclick="fasong()">发送</a>
+</body>
+<script type=text/javascript>
+    function fasong() {
+        var neirong=$("#neirong").val();
+        $("#duihuakuang").append("<div class='text-left'>我:"+neirong+"</div>");
+        var data={neirong:neirong}
+        var url="/myXM/myJiQiRen/"
+        $.post(url,data,function (result) {
+            $("#duihuakuang").append("<div class='text-right'>机器人:"+result.text+"</div><hr>");
+        },"json")
+    }
+    $("body").keydown(function (e) {
+        if(e.keyCode=="13"){
+            fasong()
+        }
+    })
+</script>
+</html>

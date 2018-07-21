@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <script src="/static/js/jquery-2.2.4.min .js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <input type=number id="neirong" placeholder="请输入3位数字">
+    <a href="javascript:void (0)" onclick="fasong()">预测</a>
+    <div id="duihuakuang" >
+    </div>
+    <img id="tuPian"  src="">
+
+</body>
+<script type=text/javascript>
+    function fasong() {
+        var reg =/^\d{3}$/;
+        var neirong=$("#neirong").val();
+         if(reg.test(parseInt(neirong))){
+            var data={neirong:neirong}
+            var url="/myXM/future3d/"
+            $.post(url,data,function (result) {
+                console.info(result)
+                $("#duihuakuang").append("<br>"+result.jieGuo);
+                $("#tuPian").attr("src",result.luJing)
+            },"json")
+         }else{
+             alert("请输入3位数字!");
+         }
+    }
+</script>
+</html>

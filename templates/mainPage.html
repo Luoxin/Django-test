@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
+		<script type="text/javascript" src="/static/js/jquery-2.2.4.min .js" ></script>
+		<script type="text/javascript" src="/static/js/bootstrap.min.js" ></script>
+		<style type="text/css">
+			html,body{
+				width: 100%;
+				height: 100%;
+			}
+			@media only screen and (min-width:768px ) {
+				.navbar-side{
+					height: 100%;
+				}
+				.navbar-side > .row{
+					height: 100%;
+				}
+				.navbar-side > .row > .nav-pills{
+					height: 100%;
+				}
+			}
+			
+			.nav-inside{
+				padding-left: 15px;
+				background-color: #444444;
+			}
+			.navbar-side > .row > .nav-pills >li a{
+				color: lightgray;
+			}
+			.navbar-side > .row > .nav-pills > li > ul >li{
+				transition: padding 0.3s;
+			}
+			.navbar-side > .row > .nav-pills li > ul >li:hover{
+				padding-left: 10px;
+			}
+			#main-title{
+				animation-name: xuanzhuan;
+				animation-duration: 2s;
+				animation-iteration-count: infinite;
+			}
+			@keyframes xuanzhuan{
+				from{transform:perspective(100px) rotateY(0deg);}
+				to{transform:perspective(100px) rotateY(360deg);}
+			}
+			.oa-content{
+				padding: 0px;
+			}
+			object{
+				margin: 0px;
+				width: 100%;
+				height: 100%;
+				
+				background:linear-gradient(white,#ebebeb,white);
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="nav navbar-inverse">
+			<div class="nav navbar-header">
+				<a class="navbar-brand" id="main-title" href="javascript:void(0)">Turing</a>
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".daohang">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse daohang" id="daohang">
+				<ul class="nav navbar-nav">
+					<li><a href="javascript:void(0)">首页</a></li>
+					<li><a href="javascript:void(0)" data-toggle="dropdown">
+						个人中心
+						<span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="javascript:void(0)">修改密码</a></li>
+							<li class="divider"><a href="javascript:void(0)">修改密码</a></li>
+							<li><a href="/myXM/">退出登录</a></li>
+						</ul>
+					</li>
+				</ul>
+				<div class="navbar-form navbar-right" >
+					<div class="form-group "   >
+						<ul class="nav nav-pills ">
+							<li >
+								<a href="javascript:void(0)" class="text-muted" data-toggle="dropdown">
+									<span class="glyphicon glyphicon-user" >:leo</span>
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="javascript:void(0)">修改密码</a></li>
+									<li class="divider"></li>
+									<li><a href="/myXM/" data-toggle="modal">退出登录</a></li>
+								</ul>
+							</li>
+						</ul>
+					
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<input class="form-control" type="search" name="" required="" placeholder="Search" x-webkit-speech="" x-webkit-grammar="builtin:search" lang="zh-CN">
+							<div class="input-group-addon btn btn-primary">
+								<span class="glyphicon glyphicon-search"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class="col-sm-3 col-md-2  navbar-side daohang">
+			<div class="row" style="overflow: auto;">
+				<ul class="nav nav-pills nav-stacked navbar-inverse ">
+					<li>
+					    <a  href="javascript:void(0)"  data-toggle="collapse" data-target="#menu1" >我的东东</a>
+						<ul class="collapse nav nav-pills nav-stacked nav-inside" id="menu1">
+							<li><a href="/myXM/ciYunPage/" data-container="body" data-toggle="popover" target="right" data-placement="right" data-content="我是三级菜单">词云</a></li>
+							<li><a href="/myXM/paChongPage/" target="right">爬虫</a></li>
+							<li><a href="javascript:void(0)" target="right">增删改查</a></li>
+							<li><a href="/myXM/buyTicketPage/" target="right">抢票</a></li>
+							<li><a href="/myXM/future3dPage/" target="right">彩票预测</a></li>
+							<li><a href="/myXM/future4dPage/" target="right">彩票预测2</a></li>
+							<li><a href="/myXM/jiQiRenPage/" target="right">图灵机器人</a></li>
+							<li><a href="/myXM/jiQiRenPage2/" target="right">图灵机器人2</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+		<div class="col-sm-9 col-md-10 oa-content" style="height: 100%;">
+				<object style="" name="right" type="text/html" ></object>
+		</div>
+		<div class="modal fade" id="exit-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header" style="background-color: rgba(0,0,0,0.1)">
+						<div class="modal-title">
+							<span class="glyphicon glyphicon-log-out">退出登录</span>
+							<span class="close" data-dismiss="modal">&times;</span>
+						</div>
+					</div>
+					<div class="modal-body">
+						<h1>确认退出吗？</h1>
+					</div>
+					<div class="modal-footer" >
+						<button onclick="location.href='/myXM/'" class="btn btn-primary">退出</button>
+						<button class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			if($(document).width()<=768){
+				$(".navbar-side").addClass("collapse");
+			}else{
+				$(".navbar-side").removeClass("collapse");
+			}
+		}
+		$("a").popover();
+	</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <script src="/static/js/jquery-2.2.4.min .js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/gq.js"></script>
+    <style>
+        div{
+{#            border: 1px  solid red;#}
+        }
+        .main{
+            width: 600px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+        .top_left,.top_right,.mid_left,.mid_mid,.mid_right{
+            display: inline-block;
+        }
+        img{
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+        }
+        .mid{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body background="/static/img/2874422462269319179.jpg">
+    <div class="main">
+        <form action="/myXM/makeCiYun/"  method="post" enctype="multipart/form-data" >
+            <div class="top">
+                <div class="top_left">
+                    <input type="file"  onchange="change()" id="photo"  name="tuPian" >
+                </div>
+                 <div class="top_right">
+                     <textarea name="wenBen" id="" cols="40" rows="10" style="resize: none"  ></textarea>
+                </div>
+            </div>
+            <div class="mid">
+                <div class="mid_left">
+                    <img src="/static/img/yuan.jpg" alt="" id="preview">
+                </div>
+                 <div class="mid_mid">
+                     <button class="btn btn-info" type="submit">生成</button>
+                </div>
+                 <div class="mid_right">
+                     <img src="/static/img/gq.jpg" alt="" >
+                </div>
+            </div>
+
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+</script>
+</html>

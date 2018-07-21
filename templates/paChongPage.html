@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <script src="/static/js/jquery-2.2.4.min .js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+</head>
+<body>
+        <div class="input-group col-xs-3">
+            <input type="text" class="form-control" id="wangZhi" placeholder="请输入要爬取的网址"  value="www.qiushibaike.com" >
+            <div class="input-group-btn">
+                <button class="btn btn-primary" onclick="paQu()">
+                   爬取
+                </button>
+            </div>
+        </div>
+        <br>
+        <div class="input-group col-xs-3">
+            <input type="text" class="form-control" id="wangZhi2" placeholder="请输入要爬取的网址"  value="www.qiushibaike.com" >
+            <div class="input-group-btn">
+                <button class="btn btn-primary" onclick="paQu2()">
+                   爬取2
+                </button>
+            </div>
+        </div>
+        <div class="input-group col-xs-3">
+            <input type="text" class="form-control" id="wangZhi3" placeholder="请输入要爬取的网址"  value="movie.douban.com/top250" >
+             <input type="text" class="form-control" id="pingFen3" placeholder="评分"  value="9" >
+            <div class="input-group-btn">
+                <button class="btn btn-primary" onclick="paQu3()">
+                   爬取3
+                </button>
+            </div>
+        </div>
+</body>
+<script type=text/javascript>
+    function testHttp(yourUrl) {
+        var strRegex="^((https|http):\/\/)";
+        var re=new RegExp(strRegex);
+        if(!re.test(yourUrl)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function paQu() {
+         var wangZhi="https://"+$("#wangZhi").val();
+         $.post("/myXM/paYiPa/",{wangZhi:wangZhi},function (result) {
+                console.info(result)
+                if(result==1){
+                    location.href="/myXM/jieGuoPage/"
+                }else{
+                    location.href="/myXM/error/"
+                }
+         },"text")
+    }
+
+    function paQu2(){
+        var myData="https://"+$("#wangZhi2").val();
+        var url="/myXM/paYiPa2/";
+        var data={wangZhi:myData};
+        $("body").html("爬取中...");
+       $.post(url,data,function (result) {
+                 if(result==1){
+                    location.href="/myXM/jieGuoPage2/"
+                }else{
+                    location.href="/myXM/error/"
+                }
+       },"text")
+    }
+    function paQu3(){
+        var last=testHttp($("#wangZhi3").val());
+        var myData="";
+        if(last){
+            myData="https://"+$("#wangZhi3").val();
+        }else{
+            myData=$("#wangZhi3").val();
+        }
+        var myPingFen=$("#pingFen3").val();
+        var url="/myXM/paYiPa3/";
+        var data={wangZhi:myData,pingFen:myPingFen};
+        $("body").html("<div>爬去中......</div><div><img src='/static/img/waiting.gif'/></div>");
+       $.post(url,data,function (result) {
+                if(result==1){
+                    location.href="/myXM/jieGuoPage3/"
+                }else{
+                    location.href="/myXM/error/"
+                }
+       },"text")
+    }
+</script>
+</html>

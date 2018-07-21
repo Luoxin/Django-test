@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <script src="/static/js/jquery-2.2.4.min .js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <input type="button" value="登录" class="btn btn-primary" id="loginPage" >
+  <input type="button" value="注册" class="btn btn-primary" id="registerPage" >
+</body>
+<script type="text/javascript">
+    $("#loginPage").on("click",function () {
+        location.href="/myXM/loginPage/"
+    })
+    $("#registerPage").on("click",function () {
+        location.href="/myXM/registerPage/"
+    })
+</script>
+</html>

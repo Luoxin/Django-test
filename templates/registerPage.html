@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <script src="/static/js/jquery-2.2.4.min .js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <form action="/myXM/registerOn/" method="POST" >
+        <table >
+            <tr>
+                <td>姓名:</td>
+                <td><input type="text" name="user" onblur="validUserName()" id="userName"></td>
+            </tr>
+            <tr>
+                <td>密码:</td>
+                <td><input type="text" name="pwd"></td>
+            </tr>
+            <tr>
+                <td colspan=2>
+                    <input type="submit" value="提交">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+<script type="text/javascript">
+    function validUserName() {
+        var userName=$("#userName").val();
+        var url="/myXM/validUserName/";
+        var data={userName:userName};
+        $.post(url,data,function (result) {
+            $("#double").remove();
+            $("#userName").after("<span id='double' style='color:red'>"+result.resultMsg+"</span>")
+        },"json")
+    }
+</script>
+</html>
